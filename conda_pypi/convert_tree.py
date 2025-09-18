@@ -196,5 +196,4 @@ class ConvertTree:
                 print(f"Exceeded maximum of {max_attempts} attempts")
                 return None
 
-            print("Solution", changes)
             return changes
