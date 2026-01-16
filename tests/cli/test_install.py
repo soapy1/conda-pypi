@@ -4,6 +4,7 @@ Tests that use run `conda pypi install` use `conda_cli` as the primary caller
 
 from __future__ import annotations
 
+from conda.base.context import reset_context
 from conda.testing.fixtures import CondaCLIFixture
 
 import re
@@ -107,4 +108,26 @@ def test_install_requires_package_without_editable(conda_cli: CondaCLIFixture):
 def test_install_editable_without_packages_succeeds(conda_cli: CondaCLIFixture):
     project = "tests/packages/has-build-dep"
     out, err, rc = conda_cli("pypi", "install", "-e", project)
+    assert rc == 0
+
+
+def test_install_from_whl_augmented_repodata(tmp_path, monkeypatch, conda_cli, conda_local_channel):
+    # TODO: test that package is installed from the local channel
+    monkeypatch.setenv("CONDA_CHANNELS", conda_local_channel)
+    reset_context()
+    out, err, rc = conda_cli(
+        "create",
+        "--prefix",
+        str(tmp_path / "env"),
+        "python"
+    )
+    assert rc == 0
+    out, err, rc = conda_cli(
+        "pypi",
+        "install",
+        "--prefix",
+        str(tmp_path / "env"),
+        "fastapi",
+        
+    )
     assert rc == 0
