@@ -12,6 +12,7 @@ import http.server
 import queue
 import socket
 import threading
+import json
 
 
 def run_test_server(directory: str) -> http.server.ThreadingHTTPServer:
@@ -55,5 +56,35 @@ def run_test_server(directory: str) -> http.server.ThreadingHTTPServer:
 
 
 if __name__ == "__main__":
-    server = run_test_server(directory=".")
-    print(server)
+    from pathlib import Path
+
+    HERE = Path(__file__).parent
+    base = HERE / "conda_local_channel"
+    http = run_test_server(str(base))
+
+    http_sock_name = http.socket.getsockname()
+    print(f"http://{http_sock_name[0]}:{http_sock_name[1]}")
+
+    noarch_repodata = base / "noarch/repodata.json"
+    repodata = {}
+    with open(noarch_repodata) as f:
+        repodata = json.loads(f.read())
+        for pkg, data in repodata["packages.whl"].items():
+            data["url"] = f"http://{http_sock_name[0]}:{http_sock_name[1]}/noarch/{data['fn']}"
+    
+    with open(noarch_repodata, 'w') as json_file:
+        json.dump(repodata, json_file, indent=4)
+    
+    def main(stdscr):
+        while True:
+            ch = stdscr.getch()
+            if ch == 27:  # ESC key
+                http.shutdown()
+                break
+
+    try:
+        while True:
+            input()
+    except KeyboardInterrupt:
+        http.shutdown()
+        print("\nServer stopped.")
