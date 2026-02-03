@@ -3,6 +3,7 @@ import json
 import os
 from pathlib import Path
 
+from conda.base.context import reset_context
 from conda.cli.main import main_subshell
 from conda_package_streaming.create import conda_builder
 
@@ -79,14 +80,20 @@ def test_checksum(tmp_path):
     assert len(paths["paths"])
 
 
-def test_create_env_from_wheel_channel(tmp_path, conda_cli, conda_local_channel):
+def test_create_env_from_wheel_channel(tmp_path, conda_cli, conda_local_channel, monkeypatch):
     """
     Ensure an environment can be created as expected using the conda_local_channel fixture.
     """
+    monkeypatch.setenv("CONDA_JSON", True)
+    monkeypatch.setenv("CONDA_SOLVER", "rattler")
+    reset_context()
+
     out, err, rc = conda_cli(
         "create",
         "--prefix",
         str(tmp_path / "env"),
         "--channel",
         str(conda_local_channel),
+        "--override-channels",
     )
+    assert rc == 0, err

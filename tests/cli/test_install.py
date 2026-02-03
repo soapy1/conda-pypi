@@ -170,6 +170,7 @@ def test_install_from_whl_augmented_repodata(
         str(tmp_path / "env"),
         "--channel",
         conda_local_channel,
+        "--override-channels",
         "idna",
         "--yes",
     )
