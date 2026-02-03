@@ -7,9 +7,6 @@ from pathlib import Path
 
 from conda.models.match_spec import MatchSpec
 from conda.testing.fixtures import TmpEnvFixture
-from conda.base.context import reset_context, context
-from conda.models.channel import Channel
-from conda_rattler_solver.solver import RattlerSolver
 
 from pytest_mock import MockerFixture
 
@@ -20,7 +17,6 @@ from conda_pypi.convert_tree import (
 )
 from conda_pypi.downloader import get_package_finder
 from conda_pypi.exceptions import CondaPypiError
-from conda_pypi.convert_tree import ConvertTree
 
 import pytest
 

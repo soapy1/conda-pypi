@@ -1,7 +1,6 @@
 import pytest
 from pathlib import Path
-from . import http_test_server
-
+from conda.testing import http_test_server
 
 pytest_plugins = (
     # Add testing fixtures and internal pytest plugins here
@@ -56,4 +55,3 @@ def conda_local_channel():
     yield f"http://{http_sock_name[0]}:{http_sock_name[1]}"
 
     http.shutdown()
-
