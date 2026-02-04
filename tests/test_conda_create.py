@@ -80,14 +80,12 @@ def test_checksum(tmp_path):
     assert len(paths["paths"])
 
 
-def test_create_env_from_wheel_channel(tmp_path, conda_cli, conda_local_channel):
+def test_create_env_from_wheel_channel(tmp_path, conda_cli, conda_local_channel, with_rattler_solver):
     """
     Ensure an environment can be created as expected using the conda_local_channel fixture.
     """
     out, err, rc = conda_cli(
         "create",
-         "--solver",
-        "rattler",
         "--prefix",
         str(tmp_path / "env"),
         "--channel",
