@@ -80,7 +80,9 @@ def test_checksum(tmp_path):
     assert len(paths["paths"])
 
 
-def test_create_env_from_wheel_channel(tmp_path, conda_cli, conda_local_channel, with_rattler_solver):
+def test_create_env_from_wheel_channel(
+    tmp_path, conda_cli, conda_local_channel, with_rattler_solver
+):
     """
     Ensure an environment can be created as expected using the conda_local_channel fixture.
     """
@@ -90,10 +92,9 @@ def test_create_env_from_wheel_channel(tmp_path, conda_cli, conda_local_channel,
         str(tmp_path / "env"),
         "--channel",
         str(conda_local_channel),
-        "--override-channels",
         "--dry-run",
         "--json",
-        raises=DryRunExit
+        raises=DryRunExit,
     )
     out_json = json.loads(out)
     assert out_json["success"]
