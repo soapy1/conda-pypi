@@ -1,3 +1,7 @@
+# This is a utility for generating test specific data in conda-pypi
+# only. It is not appropriate to use this to generate production level
+# repodata.
+
 import requests
 import json
 from typing import Dict, Any, Optional
@@ -78,7 +82,7 @@ if __name__ == "__main__":
     with open(requested_wheel_packages_file) as f:
         pkgs_data = f.read()
         for pkg in pkgs_data.splitlines():
-            repodata_packages.append(tuple(pkg.split("@")))
+            repodata_packages.append(tuple(pkg.split("==")))
 
     # Run in parallel using ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=25) as executor:
