@@ -4,7 +4,7 @@ Tests that use run `conda pypi install` use `conda_cli` as the primary caller
 
 from __future__ import annotations
 
-from conda.base.context import reset_context
+from conda.base.context import context, reset_context
 from conda.testing.fixtures import CondaCLIFixture
 
 import json
@@ -163,6 +163,8 @@ def test_install_from_whl_augmented_repodata(
     monkeypatch.setenv("CONDA_JSON", True)
     monkeypatch.setenv("CONDA_SOLVER", "rattler")
     reset_context()
+
+    assert context.solver == "rattler"
 
     out, err, rc = conda_cli(
         "create",
