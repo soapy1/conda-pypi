@@ -41,6 +41,10 @@ def configure_parser(parser: _SubParsersAction) -> None:
             git clone https://github.com/user/repo.git
             conda pypi convert ./repo
 
+        Convert a package and inject test files::
+
+            conda pypi convert --test-dir ./my-tests-dir ./my-python-project
+
         """
     )
 
@@ -69,6 +73,15 @@ def configure_parser(parser: _SubParsersAction) -> None:
         action="store_true",
         help="Build PROJECT as an editable package.",
     )
+    convert.add_argument(
+        "-t",
+        "--test-dir",
+        type=Path,
+        required=False,
+        default=None,
+        help="Directory containing test files to inject into the conda package. "
+        "Must be structured as a conda test directory for the tests to work.",
+    )
 
 
 def execute(args: Namespace) -> int:
@@ -79,6 +92,19 @@ def execute(args: Namespace) -> int:
     if not Path(args.project_path).exists():
         raise ArgumentError("PROJECT must be a local path to a sdist, wheel or directory.")
     project_path = Path(args.project_path).expanduser()
+    test_dir = args.test_dir.expanduser() if args.test_dir else None
+
+    if test_dir:
+        if not test_dir.exists():
+            raise FileNotFoundError(f"Test directory does not exist: {test_dir}")
+        if not test_dir.is_dir():
+            raise NotADirectoryError(f"Test path is not a directory: {test_dir}")
+        run_test_files = list(test_dir.glob("run_test.*"))
+        if not run_test_files:
+            raise ValueError(
+                f"Test directory must contain at least one run_test.* file: {test_dir}"
+            )
+
     output_folder = Path(args.output_folder).expanduser()
     output_folder.mkdir(parents=True, exist_ok=True)
 
@@ -94,6 +120,7 @@ def execute(args: Namespace) -> int:
                 Path(build_path),
                 output_folder,
                 python_executable,
+                test_dir=test_dir,
             )
     else:
         # Build from source (project directory or sdist)
@@ -103,6 +130,7 @@ def execute(args: Namespace) -> int:
             distribution=distribution,
             output_path=output_folder,
             prefix=prefix_path,
+            test_dir=test_dir,
         )
 
     print(f"Conda package at {package_path} built successfully. Output folder: {output_folder}.")

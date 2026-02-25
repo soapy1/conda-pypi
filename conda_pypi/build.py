@@ -10,9 +10,10 @@ import json
 import os
 import sys
 import tempfile
+import shutil
 from importlib.metadata import PathDistribution
 from pathlib import Path
-from typing import Union, Optional
+from typing import Union
 import logging
 
 from conda_package_streaming.create import conda_builder
@@ -134,7 +135,8 @@ def build_conda(
     build_path: Path,
     output_path: Path,
     python_executable,
-    project_path: Optional[Path] = None,
+    project_path: Path | None = None,
+    test_dir: Path | None = None,
     is_editable=False,
 ) -> Path:
     if not build_path.exists():
@@ -171,6 +173,9 @@ def build_conda(
         # Rewrite RECORD for any changed files
         update_RECORD(record_path, site_packages, direct_url_path)
 
+    if test_dir:
+        shutil.copytree(test_dir, build_path / "info" / "test")
+
     # Write conda's paths after all other changes
     paths = paths_json(build_path)
 
@@ -206,7 +211,8 @@ def pypa_to_conda(
     project,
     prefix: Path,
     distribution="editable",
-    output_path: Optional[Path] = None,
+    output_path: Path | None = None,
+    test_dir: Path | None = None,
 ):
     project = Path(project)
 
@@ -231,6 +237,7 @@ def pypa_to_conda(
             output_path or tmp_path,
             sys.executable,
             project_path=project,
+            test_dir=test_dir,
             is_editable=distribution == "editable",
         )
 
