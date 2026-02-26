@@ -12,6 +12,7 @@ from importlib.metadata import Distribution, PackageMetadata, PathDistribution
 from pathlib import Path
 from typing import Any, Optional, List, Dict, Callable
 
+from conda.exceptions import ArgumentError
 from conda.models.match_spec import MatchSpec
 from packaging.requirements import Requirement
 from packaging.utils import canonicalize_name
@@ -101,7 +102,9 @@ class CondaMetadata:
         }
 
     @classmethod
-    def from_distribution(cls, distribution: Distribution):
+    def from_distribution(
+        cls, distribution: Distribution, pypi_to_conda_name_mapping: dict | None = None
+    ):
         metadata = distribution.metadata
 
         python_version = metadata.get("requires-python")
@@ -109,7 +112,7 @@ class CondaMetadata:
         if python_version:
             requires_python = f"python {python_version}"
 
-        requirements, extras = requires_to_conda(distribution.requires)
+        requirements, extras = requires_to_conda(distribution.requires, pypi_to_conda_name_mapping)
 
         # conda does support ~=3.0.0 "compatibility release" matches
         depends = [requires_python] + requirements
@@ -146,7 +149,8 @@ class CondaMetadata:
                     about[conda_name] = urls[py_name]
 
         name = pypi_to_conda_name(
-            getattr(distribution, "name", None) or distribution.metadata.get("name")
+            getattr(distribution, "name", None) or distribution.metadata.get("name"),
+            pypi_to_conda_name_mapping,
         )
         version = getattr(distribution, "version", None) or distribution.metadata.get("version")
 
@@ -184,7 +188,9 @@ grayskull_pypi_mapping = json.loads(
 )
 
 
-def requires_to_conda(requires: Optional[List[str]]):
+def requires_to_conda(
+    requires: Optional[List[str]], pypi_to_conda_name_mapping: dict | None = None
+):
     from collections import defaultdict
 
     extras: Dict[str, List[str]] = defaultdict(list)
@@ -198,7 +204,7 @@ def requires_to_conda(requires: Optional[List[str]]):
         #     continue
 
         name = canonicalize_name(requirement.name)
-        requirement.name = pypi_to_conda_name(name)
+        requirement.name = pypi_to_conda_name(name, pypi_to_conda_name_mapping)
         as_conda = f"{requirement.name} {requirement.specifier}"
 
         if (marker := requirement.marker) is not None:
@@ -252,9 +258,59 @@ def remap_match_spec_name(match_spec: MatchSpec, name_map: Callable[[str], str])
     return MatchSpec(match_spec, name=mapped_name)
 
 
-def pypi_to_conda_name(pypi_name: str):
+def validate_name_mapping_format(mapping: dict) -> None:
+    """
+    Validate that the name mapping dict has the correct format.
+
+    Expected format:
+    - A dict where keys are PyPI package names (strings)
+    - Values are dicts with at least "conda_name" key (string)
+    - Optionally can have "pypi_name", "import_name", "mapping_source" keys
+    - Empty dict is allowed
+
+    Raises ArgumentError if format is invalid.
+    """
+
+    # Check that mapping is a dict and has .items() method
+    if not isinstance(mapping, dict):
+        raise ArgumentError(f"Name mapping must be a dictionary, got {type(mapping).__name__}")
+
+    try:
+        items = mapping.items()
+    except AttributeError:
+        raise ArgumentError(
+            f"Name mapping must be a dictionary with .items() method, got {type(mapping).__name__}"
+        )
+
+    for pypi_name, value in items:
+        if not isinstance(pypi_name, str):
+            raise ArgumentError(
+                f"Name mapping keys must be strings, got {type(pypi_name).__name__} for key: {pypi_name!r}"
+            )
+
+        if not isinstance(value, dict):
+            raise ArgumentError(
+                f"Name mapping values must be dictionaries, got {type(value).__name__} for key {pypi_name!r}"
+            )
+
+        if "conda_name" not in value:
+            raise ArgumentError(
+                f"Name mapping entry for {pypi_name!r} is missing required key 'conda_name'"
+            )
+
+        if not isinstance(value["conda_name"], str):
+            raise ArgumentError(
+                f"Name mapping entry for {pypi_name!r} has invalid 'conda_name' type: expected str, got {type(value['conda_name']).__name__}"
+            )
+
+
+def pypi_to_conda_name(pypi_name: str, pypi_to_conda_name_mapping: dict | None = None):
     pypi_name = canonicalize_name(pypi_name)
-    return grayskull_pypi_mapping.get(
+    return (
+        pypi_to_conda_name_mapping
+        if pypi_to_conda_name_mapping is not None
+        else grayskull_pypi_mapping
+    ).get(
         pypi_name,
         {
             "pypi_name": pypi_name,
