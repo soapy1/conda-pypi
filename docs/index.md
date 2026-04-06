@@ -14,11 +14,12 @@ them. The smart installation strategy ensures that explicitly requested
 packages come from PyPI while dependencies are sourced from conda channels
 when available.
 
-`conda-pypi` includes full support for development workflows through
-editable installations with the `-e` flag, and can install directly from git
-repositories and local directories. To protect your conda environments, it
-automatically deploys `EXTERNALLY-MANAGED` files to prevent accidental pip
-usage that could break your environment's integrity.
+`conda-pypi` includes support for development workflows through editable
+installations with the `-e` flag for local project directories.
+
+`conda-pypi` also installs `EXTERNALLY-MANAGED` marker files when you install
+the plugin, discouraging direct `pip` use that can destabilize conda-managed
+environments.
 
 :::{warning}
 This project is still in early stages of development. Don't use it in
