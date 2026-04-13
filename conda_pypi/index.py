@@ -1,6 +1,7 @@
 """
 Interface to conda-index.
 """
+
 from typing import Any
 
 from conda_index.index import ChannelIndex
@@ -28,7 +29,7 @@ def update_index(path):
 
 def store_pypi_metadata(cache: BaseCondaIndexCache, pypi_json: dict[str, Any]):
     """Convert and cache a single pypi package as a conda repodata entry.
-    
+
     Starting in conda-index 0.11.0, conda index can output repodata v3, including
     wheel packages.
 
@@ -46,10 +47,26 @@ def store_pypi_metadata(cache: BaseCondaIndexCache, pypi_json: dict[str, Any]):
     """
     repodata_entry = pypi_to_repodata_noarch_whl_entry(pypi_json)
     path = f"{repodata_entry['name']}-{repodata_entry['version']}-py3_none_any_0.whl"
+
+    cache.store_fs_state(
+        [
+            {
+                "path": cache.database_path(path),
+                "size": repodata_entry["size"],
+                "mtime": repodata_entry.get("timestamp", 1),
+            }
+        ]
+    )
+
+    # must contain sha256 and md5 keys but values may be None
+    assert "sha256" in repodata_entry
+    if "md5" not in repodata_entry:
+        repodata_entry["md5"] = None
+
     cache.store(
         cache.database_path(path),
         repodata_entry["size"],
         repodata_entry.get("timestamp", 1),
         {},
-        index_json=repodata_entry
+        index_json=repodata_entry,
     )
