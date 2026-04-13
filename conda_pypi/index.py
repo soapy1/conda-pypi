@@ -1,8 +1,13 @@
 """
 Interface to conda-index.
 """
+from typing import Any
 
 from conda_index.index import ChannelIndex
+from conda_index.index.cache import BaseCondaIndexCache
+
+
+from .markers import pypi_to_repodata_noarch_whl_entry
 
 
 def update_index(path):
@@ -19,3 +24,32 @@ def update_index(path):
     )
     channel_index.index(patch_generator=None)
     channel_index.update_channeldata()
+
+
+def store_pypi_metadata(cache: BaseCondaIndexCache, pypi_json: dict[str, Any]):
+    """Convert and cache a single pypi package as a conda repodata entry.
+    
+    Starting in conda-index 0.11.0, conda index can output repodata v3, including
+    wheel packages.
+
+    This function takes the output from the PyPI API and converts it to a conda repodata entry.
+    For example,
+
+    ```
+    def cache_repodata_entry(cache: BaseCondaIndexCache, name: str, version: str) -> dict[str, Any] | None:
+        pypi_endpoint = f"https://pypi.org/pypi/{name}/{version}/json"
+        pypi_data = requests.get(pypi_endpoint)
+        if pypi_data.json() is None:
+            raise Exception(f"unable to process {name} {version}")
+        store_pypi_metadata(cache, pypi_data.json())
+    ```
+    """
+    repodata_entry = pypi_to_repodata_noarch_whl_entry(pypi_json)
+    path = f"{repodata_entry['name']}-{repodata_entry['version']}-py3_none_any_0.whl"
+    cache.store(
+        cache.database_path(path),
+        repodata_entry["size"],
+        repodata_entry.get("timestamp", 1),
+        {},
+        index_json=repodata_entry
+    )
