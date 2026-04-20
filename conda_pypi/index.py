@@ -7,6 +7,8 @@ from typing import Any
 from conda_index.index import ChannelIndex
 from conda_index.index.cache import BaseCondaIndexCache
 
+from .exceptions import UnableToConvertToRepodataEntry
+
 
 from .markers import pypi_to_repodata_noarch_whl_entry
 
@@ -46,6 +48,10 @@ def store_pypi_metadata(cache: BaseCondaIndexCache, pypi_json: dict[str, Any]):
     ```
     """
     repodata_entry = pypi_to_repodata_noarch_whl_entry(pypi_json)
+    if repodata_entry is None:
+        raise UnableToConvertToRepodataEntry(
+            "Unable to find a pure python wheel and convert it to a repodata entry"
+        )
     path = f"{repodata_entry['name']}-{repodata_entry['version']}-py3_none_any_0.whl"
 
     cache.store_fs_state(

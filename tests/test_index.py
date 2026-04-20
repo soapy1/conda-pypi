@@ -1,22 +1,19 @@
+from __future__ import annotations
+
+import pytest
 import requests
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from conda_pypi.index import store_pypi_metadata
-from conda_index.index import ChannelIndex
-from conda_index.utils import CONDA_PACKAGE_EXTENSIONS
+from conda_pypi.exceptions import UnableToConvertToRepodataEntry
+
+if TYPE_CHECKING:
+    from conda_index.index import ChannelIndex
 
 
-def test_store_pypi_metadata(tmp_path: Path):
-    channel_index = ChannelIndex(
-        tmp_path,
-        "haswheels",  # channel name if different than last segment of tmp_path
-        repodata_v3=True,
-        update_only=True,
-        save_fs_state=False,
-        write_current_repodata=False,
-        cache_kwargs={"package_extensions": CONDA_PACKAGE_EXTENSIONS + (".whl",)},
-    )
-    cache = channel_index.cache_for_subdir("noarch")
+def test_store_pypi_metadata(tmp_path: Path, channel_index_with_wheels: ChannelIndex):
+    cache = channel_index_with_wheels.cache_for_subdir("noarch")
 
     pypi_endpoint = "https://pypi.org/pypi/fastapi/0.116.1/json"
     pypi_data = requests.get(pypi_endpoint)
@@ -27,3 +24,21 @@ def test_store_pypi_metadata(tmp_path: Path):
 
     assert len(packages.packages_whl) == 1
     assert "fastapi" in [pkg.get("name") for pkg in packages.packages_whl.values()]
+
+
+def test_store_pypi_metadata_no_repodata(channel_index_with_wheels: ChannelIndex):
+    """`pypi_to_repodata_noarch_whl_entry` may sometimes produce a `None` result.
+    This test ensures that"""
+    pypi_data = {
+        "urls": [
+            {
+                "packagetype": "bdist_wheel",
+                "filename": "foo-1.0-cp312-cp312-manylinux_x86_64.whl",
+                "url": "https://example.com/wheel.whl",
+            }
+        ],
+        "info": {"name": "foo", "version": "1.0"},
+    }
+    cache = channel_index_with_wheels.cache_for_subdir("noarch")
+    with pytest.raises(UnableToConvertToRepodataEntry):
+        store_pypi_metadata(cache, pypi_data)
