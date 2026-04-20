@@ -5,13 +5,14 @@ Run this script to regenerate ``tests/conda_local_channel/noarch/repodata.json``
 from the packages listed in ``wheel_packages.txt``. Not intended for production use.
 """
 
-import requests
 import logging
 
-from conda_pypi.index import store_pypi_metadata
-from conda_pypi.exceptions import UnableToConvertToRepodataEntry
-from conda_index.index import ChannelIndex, BaseCondaIndexCache
+import requests
+from conda_index.index import BaseCondaIndexCache, ChannelIndex
 from conda_index.utils import CONDA_PACKAGE_EXTENSIONS
+
+from conda_pypi.exceptions import UnableToConvertToRepodataEntry
+from conda_pypi.index import store_pypi_metadata
 
 log = logging.getLogger(__name__)
 

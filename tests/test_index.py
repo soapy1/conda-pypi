@@ -1,23 +1,26 @@
 from __future__ import annotations
 
-import pytest
-import requests
+import json
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from conda_pypi.index import store_pypi_metadata
+import pytest
+
 from conda_pypi.exceptions import UnableToConvertToRepodataEntry
+from conda_pypi.index import store_pypi_metadata
+
+HERE = Path(__file__).parent
+PYPI_JSON_FIXTURES = HERE / "data" / "pypi_json"
 
 if TYPE_CHECKING:
     from conda_index.index import ChannelIndex
 
 
-def test_store_pypi_metadata(tmp_path: Path, channel_index_with_wheels: ChannelIndex):
+def test_store_pypi_metadata(channel_index_with_wheels: ChannelIndex):
     cache = channel_index_with_wheels.cache_for_subdir("noarch")
 
-    pypi_endpoint = "https://pypi.org/pypi/fastapi/0.116.1/json"
-    pypi_data = requests.get(pypi_endpoint)
-    store_pypi_metadata(cache, pypi_data.json())
+    pypi_data = json.loads((PYPI_JSON_FIXTURES / "fastapi-0.116.1.json").read_text())
+    store_pypi_metadata(cache, pypi_data)
 
     # packages from database
     packages = cache.indexed_packages()
@@ -59,5 +62,6 @@ def test_store_pypi_metadata_no_sha256(channel_index_with_wheels: ChannelIndex):
         },
     }
     cache = channel_index_with_wheels.cache_for_subdir("noarch")
+
     with pytest.raises(ValueError, match="PyPI payload for 'foo-bar' is missing a sha256 digest"):
         store_pypi_metadata(cache, pypi_data)

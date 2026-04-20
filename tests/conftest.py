@@ -8,7 +8,6 @@ from conda.testing.fixtures import CondaCLIFixture
 from conda_index.index import ChannelIndex
 from conda_index.utils import CONDA_PACKAGE_EXTENSIONS
 
-
 pytest_plugins = (
     # Add testing fixtures and internal pytest plugins here
     "conda.testing",

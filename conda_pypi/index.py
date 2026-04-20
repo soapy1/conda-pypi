@@ -8,8 +8,6 @@ from conda_index.index import ChannelIndex
 from conda_index.index.cache import BaseCondaIndexCache
 
 from .exceptions import UnableToConvertToRepodataEntry
-
-
 from .markers import pypi_to_repodata_noarch_whl_entry
 
 
