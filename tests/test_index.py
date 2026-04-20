@@ -19,7 +19,9 @@ if TYPE_CHECKING:
 def test_store_pypi_metadata(channel_index_with_wheels: ChannelIndex):
     cache = channel_index_with_wheels.cache_for_subdir("noarch")
 
-    pypi_data = json.loads((PYPI_JSON_FIXTURES / "fastapi-0.116.1.json").read_text())
+    pypi_data = json.loads(
+        (PYPI_JSON_FIXTURES / "fastapi-0.116.1.json").read_text(encoding="utf-8")
+    )
     store_pypi_metadata(cache, pypi_data)
 
     # packages from database
