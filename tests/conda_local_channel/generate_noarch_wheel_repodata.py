@@ -6,21 +6,32 @@ from the packages listed in ``wheel_packages.txt``. Not intended for production 
 """
 
 import requests
+import logging
 
 from conda_pypi.index import store_pypi_metadata
+from conda_pypi.exceptions import UnableToConvertToRepodataEntry
 from conda_index.index import ChannelIndex, BaseCondaIndexCache
 from conda_index.utils import CONDA_PACKAGE_EXTENSIONS
+
+log = logging.getLogger(__name__)
 
 
 def cache_repodata_entry(cache: BaseCondaIndexCache, name: str, version: str):
     pypi_endpoint = f"https://pypi.org/pypi/{name}/{version}/json"
     pypi_data = requests.get(pypi_endpoint)
     if pypi_data.json() is None:
-        raise Exception(f"unable to process {name} {version}")
-    store_pypi_metadata(cache, pypi_data.json())
+        log.error(f"unable to process {name} {version}, no data found at {pypi_endpoint}")
+    try:
+        store_pypi_metadata(cache, pypi_data.json())
+    except UnableToConvertToRepodataEntry:
+        log.error(
+            f"unable to process {name} {version}, unable to convert pypi metadata to a repodata entry"
+        )
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.ERROR)
+
     from pathlib import Path
 
     HERE = Path(__file__).parent
