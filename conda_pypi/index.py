@@ -65,9 +65,11 @@ def store_pypi_metadata(cache: BaseCondaIndexCache, pypi_json: dict[str, Any]):
     )
 
     # must contain sha256 and md5 keys but values may be None
-    assert "sha256" in repodata_entry
-    if "md5" not in repodata_entry:
-        repodata_entry["md5"] = None
+    if not repodata_entry.get("sha256"):
+        raise ValueError(
+            f"PyPI payload for {repodata_entry.get('name')!r} is missing a sha256 digest"
+        )
+    repodata_entry.setdefault("md5", None)
 
     cache.store(
         fn=cache.database_path(path),
