@@ -30,6 +30,20 @@ def cache_repodata_entry(cache: BaseCondaIndexCache, name: str, version: str):
         )
 
 
+def get_last_n_releases(name: str, n: int = 20) -> list[str]:
+    "Returns a list of the last n versions of a package on pypi"
+    pypi_endpoint = f"https://pypi.org/pypi/{name}/json"
+    pypi_data = requests.get(pypi_endpoint)
+    if pypi_data.json() is None:
+        log.error(f"unable to get last {n} versions of {name} no data found at {pypi_endpoint}")
+    versions = []
+    for version, info in reversed(pypi_data.json().get("releases").items()):
+        if len(info) > 0:
+            versions.append(version)
+        if len(versions) == n:
+            break
+    return versions
+
 if __name__ == "__main__":
     logging.basicConfig(level=logging.ERROR)
 
@@ -42,7 +56,13 @@ if __name__ == "__main__":
     with open(requested_wheel_packages_file) as f:
         pkgs_data = f.read()
         for pkg in pkgs_data.splitlines():
-            repodata_packages.append(tuple(pkg.split("==")))
+            if "==" in pkg:
+                repodata_packages.append(tuple(pkg.split("==")))
+            else:
+                # if no specific version is selected, grab the last 20 versions of the package
+                versions = get_last_n_releases(pkg, 20)
+                for version in versions:
+                    repodata_packages.append((pkg, version,))
 
     channel_index = ChannelIndex(
         HERE,
