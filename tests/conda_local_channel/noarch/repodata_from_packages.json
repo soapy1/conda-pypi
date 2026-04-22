@@ -2,7 +2,7 @@
   "info": {
     "repodata_revisions": [
       {
-        "n_packages": 30,
+        "n_packages": 49,
         "newest": null,
         "oldest": null,
         "revision": 3
@@ -581,50 +581,70 @@
         "url": "https://files.pythonhosted.org/packages/76/c6/c88e154df9c4e1a2a66ccf0005a88dfb2650c1dffb6f5ce603dfbd452ce3/idna-3.10-py3-none-any.whl",
         "version": "3.10"
       },
-      "ipython-8.30.0-py3_none_any_0": {
+      "ipython-8.8.0-py3_none_any_0": {
         "build": "py3_none_any_0",
         "build_number": 0,
         "depends": [
-          "colorama[when=\"__win\"]",
+          "backcall",
           "decorator",
-          "exceptiongroup[when=\"python<3.11\"]",
           "jedi>=0.16",
           "matplotlib-inline",
-          "pexpect>4.3[when=\"__unix\"]",
-          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pickleshare",
+          "prompt-toolkit<3.1.0,>=3.0.11",
           "pygments>=2.4.0",
           "stack_data",
-          "traitlets>=5.13.0",
-          "typing_extensions>=4.6[when=\"python<3.12\"]",
-          "python >=3.10"
+          "traitlets>=5",
+          "pexpect>4.3[when=\"__unix\"]",
+          "appnope[when=\"__osx\"]",
+          "colorama[when=\"__win\"]",
+          "python >=3.8"
         ],
         "extra_depends": {
           "all": [
-            "ipython[black,doc,kernel,matplotlib,nbconvert,nbformat,notebook,parallel,qtconsole]",
-            "ipython[test,test_extra]"
+            "black",
+            "ipykernel",
+            "setuptools>=18.5",
+            "sphinx>=1.3",
+            "sphinx-rtd-theme",
+            "docrepr",
+            "matplotlib-base",
+            "stack_data",
+            "pytest<7",
+            "typing_extensions",
+            "pytest<7.1",
+            "pytest-asyncio",
+            "testpath",
+            "nbconvert",
+            "nbformat",
+            "ipywidgets",
+            "notebook",
+            "ipyparallel",
+            "qtconsole-base",
+            "curio",
+            "matplotlib-base!=3.2.0",
+            "numpy>=1.20",
+            "pandas",
+            "trio"
           ],
           "black": [
             "black"
           ],
           "doc": [
-            "docrepr",
-            "exceptiongroup",
-            "intersphinx-registry",
             "ipykernel",
-            "ipython[test]",
-            "matplotlib-base",
             "setuptools>=18.5",
-            "sphinx-rtd-theme",
             "sphinx>=1.3",
-            "sphinxcontrib-jquery",
-            "tomli[when=\"python<3.11\"]",
-            "typing_extensions"
+            "sphinx-rtd-theme",
+            "docrepr",
+            "matplotlib-base",
+            "stack_data",
+            "pytest<7",
+            "typing_extensions",
+            "pytest<7.1",
+            "pytest-asyncio",
+            "testpath"
           ],
           "kernel": [
             "ipykernel"
-          ],
-          "matplotlib": [
-            "matplotlib-base"
           ],
           "nbconvert": [
             "nbconvert"
@@ -643,10 +663,184 @@
             "qtconsole-base"
           ],
           "test": [
+            "pytest<7.1",
+            "pytest-asyncio",
+            "testpath"
+          ],
+          "test-extra": [
+            "pytest<7.1",
+            "pytest-asyncio",
+            "testpath",
+            "curio",
+            "matplotlib-base!=3.2.0",
+            "nbformat",
+            "numpy>=1.20",
+            "pandas",
+            "trio"
+          ]
+        },
+        "fn": "ipython-8.8.0-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "da01e6df1501e6e7c32b5084212ddadd4ee2471602e2cf3e0190f4de6b0ea481",
+        "size": 775837,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/1f/aa/a6509b4059359edd00308e3f068212dca53b7252940862cc40981a2bd713/ipython-8.8.0-py3-none-any.whl",
+        "version": "8.8.0"
+      },
+      "ipython-8.9.0-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "backcall",
+          "decorator",
+          "jedi>=0.16",
+          "matplotlib-inline",
+          "pickleshare",
+          "prompt-toolkit<3.1.0,>=3.0.30",
+          "pygments>=2.4.0",
+          "stack_data",
+          "traitlets>=5",
+          "pexpect>4.3[when=\"__unix\"]",
+          "appnope[when=\"__osx\"]",
+          "colorama[when=\"__win\"]",
+          "python >=3.8"
+        ],
+        "extra_depends": {
+          "all": [
+            "black",
+            "ipykernel",
+            "setuptools>=18.5",
+            "sphinx>=1.3",
+            "sphinx-rtd-theme",
+            "docrepr",
+            "matplotlib-base",
+            "stack_data",
+            "pytest<7",
+            "typing_extensions",
+            "pytest<7.1",
+            "pytest-asyncio",
+            "testpath",
+            "nbconvert",
+            "nbformat",
+            "ipywidgets",
+            "notebook",
+            "ipyparallel",
+            "qtconsole-base",
+            "curio",
+            "matplotlib-base!=3.2.0",
+            "numpy>=1.20",
+            "pandas",
+            "trio"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "ipykernel",
+            "setuptools>=18.5",
+            "sphinx>=1.3",
+            "sphinx-rtd-theme",
+            "docrepr",
+            "matplotlib-base",
+            "stack_data",
+            "pytest<7",
+            "typing_extensions",
+            "pytest<7.1",
+            "pytest-asyncio",
+            "testpath"
+          ],
+          "kernel": [
+            "ipykernel"
+          ],
+          "nbconvert": [
+            "nbconvert"
+          ],
+          "nbformat": [
+            "nbformat"
+          ],
+          "notebook": [
+            "ipywidgets",
+            "notebook"
+          ],
+          "parallel": [
+            "ipyparallel"
+          ],
+          "qtconsole": [
+            "qtconsole-base"
+          ],
+          "test": [
+            "pytest<7.1",
+            "pytest-asyncio",
+            "testpath"
+          ],
+          "test-extra": [
+            "pytest<7.1",
+            "pytest-asyncio",
+            "testpath",
+            "curio",
+            "matplotlib-base!=3.2.0",
+            "nbformat",
+            "numpy>=1.20",
+            "pandas",
+            "trio"
+          ]
+        },
+        "fn": "ipython-8.9.0-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "9c207b0ef2d276d1bfcfeb9a62804336abbe4b170574ea061500952319b1d78c",
+        "size": 783077,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/f6/1e/9d1150c390281156e3022c49b06ac8ba0e59bdeb8573723236579cd5a619/ipython-8.9.0-py3-none-any.whl",
+        "version": "8.9.0"
+      },
+      "ipython-9.0.0-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama[when=\"__win\"]",
+          "decorator",
+          "ipython-pygments-lexers",
+          "jedi>=0.16",
+          "matplotlib-inline",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.4.0",
+          "stack_data",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,test,test_extra]"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[test]",
+            "matplotlib-base",
+            "setuptools>=18.5",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme",
+            "sphinx>=1.3",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base"
+          ],
+          "test": [
             "pytest",
             "pytest-asyncio<0.22",
             "testpath",
-            "pickleshare",
             "packaging"
           ],
           "test-extra": [
@@ -659,15 +853,1180 @@
             "trio"
           ]
         },
-        "fn": "ipython-8.30.0-py3-none-any.whl",
+        "fn": "ipython-9.0.0-py3-none-any.whl",
         "md5": null,
         "name": "ipython",
         "noarch": "python",
-        "sha256": "85ec56a7e20f6c38fce7727dcca699ae4ffc85985aa7b23635a8008f918ae321",
-        "size": 820765,
+        "sha256": "2cce23069b830a54a5b9d3d66ccd6433047c1503a7b9a3b34593c0b5c2c08477",
+        "size": 592040,
         "subdir": "noarch",
-        "url": "https://files.pythonhosted.org/packages/1d/f3/1332ba2f682b07b304ad34cad2f003adcfeb349486103f4b632335074a7c/ipython-8.30.0-py3-none-any.whl",
-        "version": "8.30.0"
+        "url": "https://files.pythonhosted.org/packages/85/a1/894e4c0b6ac994045c6edeb2b6fdf69c59f20fcd2e348a42f4e40889181c/ipython-9.0.0-py3-none-any.whl",
+        "version": "9.0.0"
+      },
+      "ipython-9.0.0b1-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama[when=\"__win\"]",
+          "decorator",
+          "ipython-pygments-lexers",
+          "jedi>=0.16",
+          "matplotlib-inline",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.4.0",
+          "stack_data",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,test,test_extra]"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[test]",
+            "matplotlib-base",
+            "setuptools>=18.5",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme",
+            "sphinx>=1.3",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base"
+          ],
+          "test": [
+            "pytest",
+            "pytest-asyncio<0.22",
+            "testpath",
+            "packaging"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "matplotlib-base!=3.2.0",
+            "nbformat",
+            "numpy>=1.23",
+            "pandas",
+            "trio"
+          ]
+        },
+        "fn": "ipython-9.0.0b1-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "2451697baf0e3d830a5bf44d22aef78f928e4a6aa8a51b48a3f5ec76f538dac9",
+        "size": 590911,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/f2/49/97644f3d8a87d23b60ae79374d57b9d9634df8e7191bdcbad272bfe9eed0/ipython-9.0.0b1-py3-none-any.whl",
+        "version": "9.0.0b1"
+      },
+      "ipython-9.0.0b2-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama[when=\"__win\"]",
+          "decorator",
+          "ipython-pygments-lexers",
+          "jedi>=0.16",
+          "matplotlib-inline",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.4.0",
+          "stack_data",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,test,test_extra]"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[test]",
+            "matplotlib-base",
+            "setuptools>=18.5",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme",
+            "sphinx>=1.3",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base"
+          ],
+          "test": [
+            "pytest",
+            "pytest-asyncio<0.22",
+            "testpath",
+            "packaging"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "matplotlib-base!=3.2.0",
+            "nbformat",
+            "numpy>=1.23",
+            "pandas",
+            "trio"
+          ]
+        },
+        "fn": "ipython-9.0.0b2-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "030738c1b31872053bc3c0f8205e9136a099476f719eb1941aa650b64e043d0e",
+        "size": 591875,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/cd/95/7c4f040b0fc141cdc602abdcd7391d8da061120042e85d72bd2564abcc3c/ipython-9.0.0b2-py3-none-any.whl",
+        "version": "9.0.0b2"
+      },
+      "ipython-9.0.1-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama[when=\"__win\"]",
+          "decorator",
+          "ipython-pygments-lexers",
+          "jedi>=0.16",
+          "matplotlib-inline",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.4.0",
+          "stack_data",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,test,test_extra]"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[test]",
+            "matplotlib-base",
+            "setuptools>=18.5",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme",
+            "sphinx>=1.3",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base"
+          ],
+          "test": [
+            "pytest",
+            "pytest-asyncio<0.22",
+            "testpath",
+            "packaging"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "matplotlib-base!=3.2.0",
+            "nbformat",
+            "numpy>=1.23",
+            "pandas",
+            "trio"
+          ]
+        },
+        "fn": "ipython-9.0.1-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "3e878273824b52e0a2280ed84f8193aba8c4ba9a6f45a438348a3d5ef1a34bd0",
+        "size": 600186,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/28/39/fda74f8215ef94a812dd780073c61a826a88a01e51f627a3454f7ae6951d/ipython-9.0.1-py3-none-any.whl",
+        "version": "9.0.1"
+      },
+      "ipython-9.0.2-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama[when=\"__win\"]",
+          "decorator",
+          "ipython-pygments-lexers",
+          "jedi>=0.16",
+          "matplotlib-inline",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.4.0",
+          "stack_data",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,test,test_extra]"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[test]",
+            "matplotlib-base",
+            "setuptools>=18.5",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme",
+            "sphinx>=1.3",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base"
+          ],
+          "test": [
+            "pytest",
+            "pytest-asyncio<0.22",
+            "testpath",
+            "packaging"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "matplotlib-base!=3.2.0",
+            "nbformat",
+            "numpy>=1.23",
+            "pandas",
+            "trio"
+          ]
+        },
+        "fn": "ipython-9.0.2-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "143ef3ea6fb1e1bffb4c74b114051de653ffb7737a3f7ab1670e657ca6ae8c44",
+        "size": 600524,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/20/3a/917cb9e72f4e1a4ea13c862533205ae1319bd664119189ee5cc9e4e95ebf/ipython-9.0.2-py3-none-any.whl",
+        "version": "9.0.2"
+      },
+      "ipython-9.1.0-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama[when=\"__win\"]",
+          "decorator",
+          "ipython-pygments-lexers",
+          "jedi>=0.16",
+          "matplotlib-inline",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.4.0",
+          "stack_data",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,test,test_extra]"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[test]",
+            "matplotlib-base",
+            "setuptools>=18.5",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme",
+            "sphinx>=1.3",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base"
+          ],
+          "test": [
+            "pytest",
+            "pytest-asyncio<0.22",
+            "testpath",
+            "packaging"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "jupyter-ai",
+            "matplotlib-base!=3.2.0",
+            "nbformat",
+            "nbclient",
+            "ipykernel",
+            "numpy>=1.23",
+            "pandas",
+            "trio"
+          ]
+        },
+        "fn": "ipython-9.1.0-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "2df07257ec2f84a6b346b8d83100bcf8fa501c6e01ab75cd3799b0bb253b3d2a",
+        "size": 604053,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/b2/9d/4ff2adf55d1b6e3777b0303fdbe5b723f76e46cba4a53a32fe82260d2077/ipython-9.1.0-py3-none-any.whl",
+        "version": "9.1.0"
+      },
+      "ipython-9.10.0-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama>=0.4.4[when=\"__win\"]",
+          "decorator>=4.3.2",
+          "ipython-pygments-lexers>=1.0.0",
+          "jedi>=0.18.1",
+          "matplotlib-inline>=0.1.5",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.11.0",
+          "stack_data>=0.6.0",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,terminal,test,test_extra]",
+            "argcomplete>=3.0"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[matplotlib,test]",
+            "setuptools>=70.0",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme>=0.1.8",
+            "sphinx>=8.0",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base>3.9"
+          ],
+          "test": [
+            "pytest>=7.0.0",
+            "pytest-asyncio>=1.0.0",
+            "testpath>=0.2",
+            "packaging>=20.1.0",
+            "setuptools>=61.2"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "jupyter-ai",
+            "ipython[matplotlib]",
+            "nbformat",
+            "nbclient",
+            "ipykernel>6.30",
+            "numpy>=1.27",
+            "pandas>2.1",
+            "trio>=0.1.0"
+          ]
+        },
+        "fn": "ipython-9.10.0-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "c6ab68cc23bba8c7e18e9b932797014cc61ea7fd6f19de180ab9ba73e65ee58d",
+        "size": 622774,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/3d/aa/898dec789a05731cd5a9f50605b7b44a72bd198fd0d4528e11fc610177cc/ipython-9.10.0-py3-none-any.whl",
+        "version": "9.10.0"
+      },
+      "ipython-9.10.1-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama>=0.4.4[when=\"__win\"]",
+          "decorator>=4.3.2",
+          "ipython-pygments-lexers>=1.0.0",
+          "jedi>=0.18.1",
+          "matplotlib-inline>=0.1.5",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.11.0",
+          "stack_data>=0.6.0",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,terminal,test,test_extra]",
+            "argcomplete>=3.0"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[matplotlib,test]",
+            "setuptools>=70.0",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme>=0.1.8",
+            "sphinx>=8.0",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base>3.9"
+          ],
+          "test": [
+            "pytest>=7.0.0",
+            "pytest-asyncio>=1.0.0",
+            "testpath>=0.2",
+            "packaging>=20.1.0",
+            "setuptools>=61.2"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "jupyter-ai",
+            "ipython[matplotlib]",
+            "nbformat",
+            "nbclient",
+            "ipykernel>6.30",
+            "numpy>=1.27",
+            "pandas>2.1",
+            "trio>=0.1.0"
+          ]
+        },
+        "fn": "ipython-9.10.1-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "82d18ae9fb9164ded080c71ef92a182ee35ee7db2395f67616034bebb020a232",
+        "size": 622827,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/01/09/ba70f8d662d5671687da55ad2cc0064cf795b15e1eea70907532202e7c97/ipython-9.10.1-py3-none-any.whl",
+        "version": "9.10.1"
+      },
+      "ipython-9.11.0-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama>=0.4.4[when=\"__win\"]",
+          "decorator>=5.1.0",
+          "ipython-pygments-lexers>=1.0.0",
+          "jedi>=0.18.2",
+          "matplotlib-inline>=0.1.6",
+          "pexpect>4.6[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.14.0",
+          "stack_data>=0.6.0",
+          "traitlets>=5.13.0",
+          "python >=3.12"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,terminal,test,test_extra]",
+            "argcomplete>=3.0",
+            "types-decorator"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[matplotlib,test]",
+            "setuptools>=80.0",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme>=0.1.8",
+            "sphinx>=8.0",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base>3.9"
+          ],
+          "test": [
+            "pytest>=7.0.0",
+            "pytest-asyncio>=1.0.0",
+            "testpath>=0.2",
+            "packaging>=23.0.0",
+            "setuptools>=80.0"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "jupyter-ai",
+            "ipython[matplotlib]",
+            "nbformat",
+            "nbclient",
+            "ipykernel>6.30",
+            "numpy>=2.0",
+            "pandas>2.1",
+            "trio>=0.22.0"
+          ]
+        },
+        "fn": "ipython-9.11.0-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "6922d5bcf944c6e525a76a0a304451b60a2b6f875e86656d8bc2dfda5d710e19",
+        "size": 624222,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/b2/90/45c72becc57158facc6a6404f663b77bbcea2519ca57f760e2879ae1315d/ipython-9.11.0-py3-none-any.whl",
+        "version": "9.11.0"
+      },
+      "ipython-9.12.0-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama>=0.4.4[when=\"__win\"]",
+          "decorator>=5.1.0",
+          "ipython-pygments-lexers>=1.0.0",
+          "jedi>=0.18.2",
+          "matplotlib-inline>=0.1.6",
+          "pexpect>4.6[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.14.0",
+          "stack_data>=0.6.0",
+          "traitlets>=5.13.0",
+          "python >=3.12"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,terminal,test,test_extra]",
+            "argcomplete>=3.0",
+            "types-decorator"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[matplotlib,test]",
+            "setuptools>=80.0",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme>=0.1.8",
+            "sphinx>=8.0",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base>3.9"
+          ],
+          "test": [
+            "pytest>=7.0.0",
+            "pytest-asyncio>=1.0.0",
+            "testpath>=0.2",
+            "packaging>=23.0.0",
+            "setuptools>=80.0"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "jupyter-ai",
+            "ipython[matplotlib]",
+            "nbformat",
+            "nbclient",
+            "ipykernel>6.30",
+            "numpy>=2.0",
+            "pandas>2.1",
+            "trio>=0.22.0"
+          ]
+        },
+        "fn": "ipython-9.12.0-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "0f2701e8ee86e117e37f50563205d36feaa259d2e08d4a6bc6b6d74b18ce128d",
+        "size": 625661,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/59/22/906c8108974c673ebef6356c506cebb6870d48cedea3c41e949e2dd556bb/ipython-9.12.0-py3-none-any.whl",
+        "version": "9.12.0"
+      },
+      "ipython-9.2.0-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama[when=\"__win\"]",
+          "decorator",
+          "ipython-pygments-lexers",
+          "jedi>=0.16",
+          "matplotlib-inline",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.4.0",
+          "stack_data",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,test,test_extra]"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[test]",
+            "matplotlib-base",
+            "setuptools>=18.5",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme",
+            "sphinx>=1.3",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base"
+          ],
+          "test": [
+            "pytest",
+            "pytest-asyncio<0.22",
+            "testpath",
+            "packaging"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "jupyter-ai",
+            "matplotlib-base!=3.2.0",
+            "nbformat",
+            "nbclient",
+            "ipykernel",
+            "numpy>=1.23",
+            "pandas",
+            "trio"
+          ]
+        },
+        "fn": "ipython-9.2.0-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "fef5e33c4a1ae0759e0bba5917c9db4eb8c53fee917b6a526bd973e1ca5159f6",
+        "size": 604277,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/78/ce/5e897ee51b7d26ab4e47e5105e7368d40ce6cfae2367acdf3165396d50be/ipython-9.2.0-py3-none-any.whl",
+        "version": "9.2.0"
+      },
+      "ipython-9.3.0-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama[when=\"__win\"]",
+          "decorator",
+          "ipython-pygments-lexers",
+          "jedi>=0.16",
+          "matplotlib-inline",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.4.0",
+          "stack_data",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,test,test_extra]"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[test]",
+            "matplotlib-base",
+            "setuptools>=18.5",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme",
+            "sphinx>=1.3",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base"
+          ],
+          "test": [
+            "pytest",
+            "pytest-asyncio<0.22",
+            "testpath",
+            "packaging"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "jupyter-ai",
+            "matplotlib-base!=3.2.0",
+            "nbformat",
+            "nbclient",
+            "ipykernel",
+            "numpy>=1.23",
+            "pandas",
+            "trio"
+          ]
+        },
+        "fn": "ipython-9.3.0-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "1a0b6dd9221a1f5dddf725b57ac0cb6fddc7b5f470576231ae9162b9b3455a04",
+        "size": 605320,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/3c/99/9ed3d52d00f1846679e3aa12e2326ac7044b5e7f90dc822b60115fa533ca/ipython-9.3.0-py3-none-any.whl",
+        "version": "9.3.0"
+      },
+      "ipython-9.4.0-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama[when=\"__win\"]",
+          "decorator",
+          "ipython-pygments-lexers",
+          "jedi>=0.16",
+          "matplotlib-inline",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.4.0",
+          "stack_data",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,test,test_extra]"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[test]",
+            "matplotlib-base",
+            "setuptools>=18.5",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme",
+            "sphinx>=1.3",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base"
+          ],
+          "test": [
+            "pytest",
+            "pytest-asyncio<0.22",
+            "testpath",
+            "packaging"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "jupyter-ai",
+            "matplotlib-base!=3.2.0",
+            "nbformat",
+            "nbclient",
+            "ipykernel",
+            "numpy>=1.23",
+            "pandas",
+            "trio"
+          ]
+        },
+        "fn": "ipython-9.4.0-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "25850f025a446d9b359e8d296ba175a36aedd32e83ca9b5060430fe16801f066",
+        "size": 611021,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/63/f8/0031ee2b906a15a33d6bfc12dd09c3dfa966b3cb5b284ecfb7549e6ac3c4/ipython-9.4.0-py3-none-any.whl",
+        "version": "9.4.0"
+      },
+      "ipython-9.5.0-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama[when=\"__win\"]",
+          "decorator",
+          "ipython-pygments-lexers",
+          "jedi>=0.16",
+          "matplotlib-inline",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.4.0",
+          "stack_data",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,test,test_extra]"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[test]",
+            "matplotlib-base",
+            "setuptools>=18.5",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme",
+            "sphinx>=1.3",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base"
+          ],
+          "test": [
+            "pytest",
+            "pytest-asyncio",
+            "testpath",
+            "packaging"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "jupyter-ai",
+            "matplotlib-base!=3.2.0",
+            "nbformat",
+            "nbclient",
+            "ipykernel",
+            "numpy>=1.23",
+            "pandas",
+            "trio"
+          ]
+        },
+        "fn": "ipython-9.5.0-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "88369ffa1d5817d609120daa523a6da06d02518e582347c29f8451732a9c5e72",
+        "size": 612426,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/08/2a/5628a99d04acb2d2f2e749cdf4ea571d2575e898df0528a090948018b726/ipython-9.5.0-py3-none-any.whl",
+        "version": "9.5.0"
+      },
+      "ipython-9.6.0-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama[when=\"__win\"]",
+          "decorator",
+          "ipython-pygments-lexers",
+          "jedi>=0.16",
+          "matplotlib-inline",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.4.0",
+          "stack_data",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,test,test_extra]"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[matplotlib,test]",
+            "setuptools>=61.2",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme",
+            "sphinx>=1.3",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base>3.7"
+          ],
+          "test": [
+            "pytest",
+            "pytest-asyncio",
+            "testpath",
+            "packaging"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "jupyter-ai",
+            "ipython[matplotlib]",
+            "nbformat",
+            "nbclient",
+            "ipykernel",
+            "numpy>=1.25",
+            "pandas>2.0",
+            "trio"
+          ]
+        },
+        "fn": "ipython-9.6.0-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "5f77efafc886d2f023442479b8149e7d86547ad0a979e9da9f045d252f648196",
+        "size": 616170,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/48/c5/d5e07995077e48220269c28a221e168c91123ad5ceee44d548f54a057fc0/ipython-9.6.0-py3-none-any.whl",
+        "version": "9.6.0"
+      },
+      "ipython-9.7.0-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama>=0.4.4[when=\"__win\"]",
+          "decorator>=4.3.2",
+          "ipython-pygments-lexers>=1.0.0",
+          "jedi>=0.18.1",
+          "matplotlib-inline>=0.1.5",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.11.0",
+          "stack_data>=0.6.0",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,test,test_extra]"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[matplotlib,test]",
+            "setuptools>=70.0",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme>=0.1.8",
+            "sphinx>=8.0",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base>3.9"
+          ],
+          "test": [
+            "pytest>=7.0.0",
+            "pytest-asyncio>=1.0.0",
+            "testpath>=0.2",
+            "packaging>=20.1.0",
+            "setuptools>=61.2"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "jupyter-ai",
+            "ipython[matplotlib]",
+            "nbformat",
+            "nbclient",
+            "ipykernel>6.30",
+            "numpy>=1.27",
+            "pandas>2.1",
+            "trio>=0.1.0"
+          ]
+        },
+        "fn": "ipython-9.7.0-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "bce8ac85eb9521adc94e1845b4c03d88365fd6ac2f4908ec4ed1eb1b0a065f9f",
+        "size": 618911,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/05/aa/62893d6a591d337aa59dcc4c6f6c842f1fe20cd72c8c5c1f980255243252/ipython-9.7.0-py3-none-any.whl",
+        "version": "9.7.0"
+      },
+      "ipython-9.8.0-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama>=0.4.4[when=\"__win\"]",
+          "decorator>=4.3.2",
+          "ipython-pygments-lexers>=1.0.0",
+          "jedi>=0.18.1",
+          "matplotlib-inline>=0.1.5",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.11.0",
+          "stack_data>=0.6.0",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,test,test_extra]"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[matplotlib,test]",
+            "setuptools>=70.0",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme>=0.1.8",
+            "sphinx>=8.0",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base>3.9"
+          ],
+          "test": [
+            "pytest>=7.0.0",
+            "pytest-asyncio>=1.0.0",
+            "testpath>=0.2",
+            "packaging>=20.1.0",
+            "setuptools>=61.2"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "jupyter-ai",
+            "ipython[matplotlib]",
+            "nbformat",
+            "nbclient",
+            "ipykernel>6.30",
+            "numpy>=1.27",
+            "pandas>2.1",
+            "trio>=0.1.0"
+          ]
+        },
+        "fn": "ipython-9.8.0-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "ebe6d1d58d7d988fbf23ff8ff6d8e1622cfdb194daf4b7b73b792c4ec3b85385",
+        "size": 621374,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/f1/df/8ee1c5dd1e3308b5d5b2f2dfea323bb2f3827da8d654abb6642051199049/ipython-9.8.0-py3-none-any.whl",
+        "version": "9.8.0"
+      },
+      "ipython-9.9.0-py3_none_any_0": {
+        "build": "py3_none_any_0",
+        "build_number": 0,
+        "depends": [
+          "colorama>=0.4.4[when=\"__win\"]",
+          "decorator>=4.3.2",
+          "ipython-pygments-lexers>=1.0.0",
+          "jedi>=0.18.1",
+          "matplotlib-inline>=0.1.5",
+          "pexpect>4.3[when=\"__unix\"]",
+          "prompt-toolkit<3.1.0,>=3.0.41",
+          "pygments>=2.11.0",
+          "stack_data>=0.6.0",
+          "traitlets>=5.13.0",
+          "typing_extensions>=4.6[when=\"python<3.12\"]",
+          "python >=3.11"
+        ],
+        "extra_depends": {
+          "all": [
+            "ipython[doc,matplotlib,terminal,test,test_extra]",
+            "argcomplete>=3.0"
+          ],
+          "black": [
+            "black"
+          ],
+          "doc": [
+            "docrepr",
+            "exceptiongroup",
+            "intersphinx-registry",
+            "ipykernel",
+            "ipython[matplotlib,test]",
+            "setuptools>=70.0",
+            "sphinx-toml==0.0.4",
+            "sphinx-rtd-theme>=0.1.8",
+            "sphinx>=8.0",
+            "typing_extensions"
+          ],
+          "matplotlib": [
+            "matplotlib-base>3.9"
+          ],
+          "test": [
+            "pytest>=7.0.0",
+            "pytest-asyncio>=1.0.0",
+            "testpath>=0.2",
+            "packaging>=20.1.0",
+            "setuptools>=61.2"
+          ],
+          "test-extra": [
+            "ipython[test]",
+            "curio",
+            "jupyter-ai",
+            "ipython[matplotlib]",
+            "nbformat",
+            "nbclient",
+            "ipykernel>6.30",
+            "numpy>=1.27",
+            "pandas>2.1",
+            "trio>=0.1.0"
+          ]
+        },
+        "fn": "ipython-9.9.0-py3-none-any.whl",
+        "md5": null,
+        "name": "ipython",
+        "noarch": "python",
+        "sha256": "b457fe9165df2b84e8ec909a97abcf2ed88f565970efba16b1f7229c283d252b",
+        "size": 621431,
+        "subdir": "noarch",
+        "url": "https://files.pythonhosted.org/packages/86/92/162cfaee4ccf370465c5af1ce36a9eacec1becb552f2033bb3584e6f640a/ipython-9.9.0-py3-none-any.whl",
+        "version": "9.9.0"
       },
       "pydantic-2.10.6-py3_none_any_0": {
         "build": "py3_none_any_0",

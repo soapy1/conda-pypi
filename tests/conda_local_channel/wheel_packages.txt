@@ -21,7 +21,7 @@ httpx==0.28.1
 click==8.1.8
 rich==13.9.4
 pydantic==2.10.6
-ipython==8.30.0
+ipython
 uvicorn==0.34.0
 0x-web3==4.8.2.1
 advancedselector==3.1.0
