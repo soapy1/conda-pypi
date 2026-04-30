@@ -181,7 +181,7 @@
           "configparser",
           "sqlalchemy",
           "tabulate",
-          "tabulate[widechars]",
+          "tabulate",
           "python >=3.8"
         ],
         "extra_depends": {
@@ -196,7 +196,7 @@
             "pytest>=4.0.0",
             "pytest-cov>=2.5.1",
             "psutil>=5.6.1",
-            "pathlib2>=2.3.3[when=\"python<3.4\"]"
+            "pathlib2>=2.3.3"
           ]
         },
         "fn": "adup-0.1.0-py3-none-any.whl",
