@@ -438,16 +438,17 @@
       },
       "fastapi-0.116.1-py3_none_any_0": {
         "build": "py3_none_any_0",
-        "build_number": 0,
+        "build_number": 2,
         "depends": [
           "starlette<0.48.0,>=0.40.0",
           "pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4",
           "typing_extensions>=4.8.0",
           "python >=3.8"
         ],
+        "track_features": ["pypi"],
         "extra_depends": {
           "all": [
-            "fastapi-cli[standard]>=0.0.8",
+            "fastapi-cli>=0.0.8",
             "httpx>=0.23.0",
             "jinja2>=3.1.5",
             "python-multipart>=0.0.18",
@@ -456,25 +457,25 @@
             "ujson!=4.0.2,!=4.1.0,!=4.2.0,!=4.3.0,!=5.0.0,!=5.1.0,>=4.0.1",
             "orjson>=3.2.1",
             "email-validator>=2.0.0",
-            "uvicorn[standard]>=0.12.0",
+            "uvicorn>=0.12.0",
             "pydantic-settings>=2.0.0",
             "pydantic-extra-types>=2.0.0"
           ],
           "standard": [
-            "fastapi-cli[standard]>=0.0.8",
+            "fastapi-cli>=0.0.8",
             "httpx>=0.23.0",
             "jinja2>=3.1.5",
             "python-multipart>=0.0.18",
             "email-validator>=2.0.0",
-            "uvicorn[standard]>=0.12.0"
+            "uvicorn>=0.12.0"
           ],
           "standard-no-fastapi-cloud-cli": [
-            "fastapi-cli[standard-no-fastapi-cloud-cli]>=0.0.8",
+            "fastapi-cli>=0.0.8",
             "httpx>=0.23.0",
             "jinja2>=3.1.5",
             "python-multipart>=0.0.18",
             "email-validator>=2.0.0",
-            "uvicorn[standard]>=0.12.0"
+            "uvicorn>=0.12.0"
           ]
         },
         "fn": "fastapi-0.116.1-py3-none-any.whl",
