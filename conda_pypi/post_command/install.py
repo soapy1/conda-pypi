@@ -120,5 +120,5 @@ def _pypi_lines_from_paths(paths: Iterable[str] | None = None) -> list[str]:
                     if line.startswith(line_prefix):
                         lines.append(line[len(line_prefix) :])
         except OSError as exc:
-            raise CondaFileIOError(f"Could not process {path}") from exc
+            raise CondaFileIOError(filepath=path, message="Could not process file") from exc
     return lines
